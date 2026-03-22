@@ -1,20 +1,42 @@
-[gd_scene format=3 uid="uid://c48v0xdv5liqp"]
+[gd_scene format=3 uid="uid://biud0ewvaix7w"]
 
-[ext_resource type="Texture2D" uid="uid://bgdnr4igjr2or" path="res://Asset/PNG/Tiles/Tiles/tile_0000.png" id="1_romgu"]
+[ext_resource type="Texture2D" uid="uid://cah00vglwy6bw" path="res://Asset/PNG/Players/Tilemap/tilemap_packed.png" id="1_l42dj"]
+[ext_resource type="Script" uid="uid://diprmp7ggfsrg" path="res://Script/fox.gd" id="1_vtyw1"]
 
-[node name="Node2D" type="Node2D" unique_id=2041927581]
-position = Vector2(333, 112)
-scale = Vector2(4.9299874, 4.99848)
+[sub_resource type="AtlasTexture" id="AtlasTexture_blrne"]
+atlas = ExtResource("1_l42dj")
+region = Rect2(0, 0, 24, 24)
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=131413735]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_romgu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3opw3"]
+atlas = ExtResource("1_l42dj")
+region = Rect2(24, 0, 24, 24)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1005346801]
-offset_left = 80.93324
-offset_top = 1.2003665
-offset_right = 120.93324
-offset_bottom = 41.200367
-rotation = 1.5674301
-texture = ExtResource("1_romgu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a84m2"]
+atlas = ExtResource("1_l42dj")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_op24p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blrne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3opw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a84m2")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1476922996]
+script = ExtResource("1_vtyw1")
+
+[node name="fox" type="AnimatedSprite2D" parent="." unique_id=1060114745]
+position = Vector2(41, 50)
+sprite_frames = SubResource("SpriteFrames_op24p")
+animation = &"move"
+frame_progress = 0.8139334
